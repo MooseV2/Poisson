@@ -81,5 +81,39 @@ python manage.py runserver 0.0.0.0:80
 gunicorn -b 0.0.0.0:80 poisson.wsgi
 ```
 
+## Next Steps
+
+### Scalability
+
+Currently this MVP is not designed to be production-ready. Some obvious first steps:
+
+- **From 1 to 100 users**
+  - Performance: use a proper reverse proxy (Nginx) to dispatch clients to the Django instance. Also to serve static assets (both Django and Gunicorn are not designed to do this)
+  - Security hardening: firewalls, proper key managements, provide only minimal permissions from authenticated services, TLS should be added (Let's Encrypt) to the web server.
+  - User features: add login / authentication system, since currently anyone can edit any page. Add a better onboarding experience, and make it easier to share pages (since the goal of this platform is to share the PoIs with others)
+  - Codebase: Better documentation is always a good idea, as well as investing in a test suite to cover both the back and frontend
+- **From 100-10000 users**
+  - Server performance: Add load balancing to dispatch requests into one of many servers. Since 100-10000 is a large range, ideally the servers would automatically scale based on the load. Put static assets on a CDN.
+  - Backend performance: Optimize database by evaluating reads/writes, indexes, etc.
+  - Frontend performance: Change the number of requests needed to update data (currently 1 POST request per PoI update; this can be batched)
+  - Security: It's a good idea to perform penetration testing at this point
+- **Beyond 10k users**
+  - Most likely the previous changes from the previous step are sufficient to handle many more users. If the server can effectively load balance and autoscale, then the bottlenecks have already been mitigated. Some value-engineering can be done to reduce server costs, but I would manage this on a as-need basis and with a team with experience scaling to huge numbers.
+
+
+
+### Features that didn't make the cut (due to time):
+
+- User authentication, so users can create and edit pages without fear of modification from others
+- Better map positioning: a crosshair should bring the map to view the users' physical location. Also the map should automatically zoom out to the extents of all the Points of Interest on a page load.
+- Autocomplete locations, so users can type a Point of Interest and a marker will be placed there automatically
+- Add an (editable) page title, so pages can be labeled ("Favourite Restaurants"). Should be trivial to incorporate into the MVP due to the way it was designed.
+
+
+## License
+
+MIT license. See [LICENSE](LICENSE "LICENSE") for more details.
+
+
 
 
