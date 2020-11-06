@@ -108,6 +108,7 @@ Currently this MVP is not designed to be production-ready. Some obvious first st
 - Better map positioning: a crosshair should bring the map to view the users' physical location. Also the map should automatically zoom out to the extents of all the Points of Interest on a page load.
 - Autocomplete locations, so users can type a Point of Interest and a marker will be placed there automatically
 - Add an (editable) page title, so pages can be labeled ("Favourite Restaurants"). Should be trivial to incorporate into the MVP due to the way it was designed.
+- Reponsive (mobile) design. The CSS library is actually already responsive, so it would be quite easy to modify the code to make it work better on mobile. That said, I'd probably want to do an evaluation of the UX because the controls may be frustrating on a small device in their current state.
 
 
 ## License
