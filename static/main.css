@@ -1,0 +1,88 @@
+#mapid {
+    height: calc(100vh - 7rem);
+}
+
+.prop[contenteditable="true"] {
+    outline: 1px solid #ddd;
+    background-color: #eeeefe;
+}
+
+.menu {
+    max-height: calc(100vh - 7rem);
+    overflow-y: scroll;
+}
+
+.button-bar {
+    height: 0;
+    opacity: 0;
+    transition: height 0.3s, opacity 0.5s ease-out;
+}
+
+.button-bar.visible {
+    height: auto;
+    opacity: 1;
+}
+
+.menu-item {
+    margin-botton: 1rem;
+}
+
+.menu-item:hover {
+    background-color: #fafafa;
+}
+
+
+
+/* Make the navbar taller, and high contrast. */
+.navbar {
+    height: 6rem;
+    background-color: #222222;
+    padding: .5em 0 1em;
+}
+
+.navbar-primary .navbar-brand {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    padding-left: 2rem;
+}
+
+.btn.btn-link {
+    color: lightgray;
+    background-color: #222222;
+    font-size: 1.5em;
+}
+
+/* Make the button link color lighter on the nav bar */
+.btn.btn-link.selected {
+    color: white;
+    background-color: #222222;
+    font-size: 1.5em;
+}
+
+.btn-share {
+    padding: 2rem;
+}
+
+/* Add padding to the right side of navbar. */
+.navbar-section {
+    padding-right: 2rem;
+}
+
+.column {
+    padding: 0.5rem;
+}
+
+.menu-badge>i {
+    margin: 8pt;
+}
+
+.toast {
+  opacity: 0;
+  position: absolute;
+  transition: opacity 0.5s ease-out;
+}
+
+.toast.visible {
+  opacity: 1;
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poisson</title>
+    <meta name="description" content="Poisson -- Share Points of Interest with Friends">
+    <meta name="keywords" content="poisson, point of interest, django">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+    <link rel="stylesheet" href="{% static 'spectre.min.css' %}">
+    <link rel="stylesheet" href="{% static 'spectre-exp.min.css' %}">
+    <link rel="stylesheet" href="{% static 'spectre-icons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'leaflet.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+</head>
+<body>
+    <div id="toast" class="toast toast-primary text-center">
+        Toast here
+    </div>
+    <header class="navbar">
+        <div class="navbar-primary">
+            <span class="navbar-brand mr-10">Poisson &#x1F433;</span>
+        </div>
+    </header><!-- .navbar -->
+    <div class="container">
+        <div class="columns">
+            <div class="column col-8">
+                <div id="mapid">
+                </div>
+            </div>
+            <div class="column col-4 sidebar">
+                <ul class="menu" id="poi-menu">
+                    {% csrf_token %}
+                    <li class="divider" data-content="Points of Interest">
+                        <div class="menu-badge">
+                            <span class="label label-rounded">
+                                <i class="icon icon-edit"></i> <a id="edit" href="#">Edit</a>
+                            </span>
+                        </div>
+                    </li>
+                    <li class="divider"></li>
+                    <!-- This is a new ES6 feature called Template Tags -->
+                    <template id="template_poi">
+                        <div>
+                            <li class="menu-item">
+                                <h4 class="title prop">Title</h4>
+                                <h6 class="description prop">Description</h6>
+                                <div class="button-bar">
+                                    <button class="control-move btn btn-primary tooltip" data-tooltip="Move">
+                                        <i class="icon icon-flag"></i>
+                                    </button>
+                                    <button class="control-delete btn btn-error tooltip" data-tooltip="Delete">
+                                        <i class="icon icon-delete"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                        </div>
+                    </template>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'leaflet.js' %}"></script>
+    <script src="{% static 'main.js' %}"></script>
+</body>
+</html>
