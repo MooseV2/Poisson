@@ -34,44 +34,52 @@ To share a PoI page, simply copy the URL. Each unique URL is its own page, and v
 
 1. Dependencies
 
-	sudo apt update
-	sudo apt install build-essential
-    sudo apt install mysql-server
-    sudo apt install libmysqlclient-dev
-    sudo apt install python3-dev
-
+```sh
+sudo apt update
+sudo apt install build-essential
+sudo apt install mysql-server
+sudo apt install libmysqlclient-dev
+sudo apt install python3-dev
+```
 
 2. Setup MySQL
 
-    mysql -u root
+```sh
+mysql -u root
+```
 
-    create database poisson_data;
-    show databases;
+```sql
+create database poisson_data;
+show databases;
 
-    create user 'django'@'localhost' identified by 'fish';
-	grant usage on *.* to 'django'@'localhost';
-	grant all privileges on poisson_data.* to 'django'@'localhost';
-    exit
+create user 'django'@'localhost' identified by 'fish';
+grant usage on *.* to 'django'@'localhost';
+grant all privileges on poisson_data.* to 'django'@'localhost';
+exit
+```
 
 3. Setup Python
 
-    git clone https://github.com/moosev2/poisson.git
-    cd poisson
-    python3 -m venv env
-    source env/bin/activate
-    pip install -r requirements.txt
+```sh
+git clone https://github.com/moosev2/poisson.git
+cd poisson
+python3 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
 
-    python manage.py makemigrations backend
-    python manage.py migrate
+python manage.py makemigrations backend
+python manage.py migrate
+```
 
 4. Run
 
-   # Using Django
-   python manage.py runserver 0.0.0.0:80
+```sh
+# Using Django
+python manage.py runserver 0.0.0.0:80
 
-   # OR, Gunicorn (seems to be some caching bugs?)
-   gunicorn -b 0.0.0.0:80 poisson.wsgi
-
+# OR, Gunicorn (seems to be some caching bugs?)
+gunicorn -b 0.0.0.0:80 poisson.wsgi
+```
 
 
 
